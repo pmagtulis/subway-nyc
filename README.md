@@ -3,4 +3,4 @@ Data and code for processing of subway-related data for my master's project in p
 
 # What is this?
 
-This hosts the code and webpage for my master's project for Columbia Journalism School. The webpage can be found [here](https://pmagtulis.github.io/subway-nyc/)
+This hosts the code and webpage for my master's project for Columbia Journalism School. The webpage can be found [here](https://pmagtulis.github.io/subway-nyc/).
