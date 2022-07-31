@@ -54,24 +54,6 @@ function d3waffle() {
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
               .style("cursor", "default");
   
-        var tooltip = d3.select("body")
-              .append("div")
-              .attr("class", "waffle-tooltip")
-              .style("left", "50%")
-              .style("top", "20%")
-              .style("position", "absolute")
-              .style("width", "150px")
-              .style("z-index", 10)
-              .style("text-align", "right")
-              .style("background", "#333")
-              .style("margin", "3px")
-              .style("color","white")
-              .style("padding","3px")
-              .style("border","0px")
-              .style("border-radius","3px") // 3px rule
-              .style("opacity",0)
-              .style("cursor", "default");
-  
         var nodes = svg.selectAll(".node")
               .data(detaildata)
               .enter().append("g")
@@ -93,74 +75,30 @@ function d3waffle() {
                 textsize = Math.min(val2 * gridSize, (val2 * gridSize - val) / this.getComputedTextLength() * val);
                 return textsize * adjust + "px";
               })
-              .on("mouseover", mouseover)
-              .on("mouseout", mouseout)
-              .on("mousemove", mousemove)
               .transition()
               .duration(appearancetimes)
               .style("opacity", 1);
-  
-        nodes.append("rect")
-              .style("fill", "white")
-              .attr('class', function(d){ return d.class; })
-              .style("stroke", "gray")
-              .attr("width", gridSize)
-              .attr("height", gridSize)
-              .on("mouseover", mouseover)
-              .on("mouseout", mouseout)
-              .on("mousemove", mousemove)
-              .style("opacity", 0)
   
         var legend = svg.selectAll('.legend')
             .data(data)
             .enter().append('g')
             .attr('class', function(d){ return "legend" + " " + d.class; })
             .attr("transform", function(d) { return "translate(" + (cols*gridSize + magic_padding) + "," + magic_padding + ")"; })
+        
+        legend.append('rect')
+            .attr("width", 12)
+            .attr("x", 50)
+            .attr("y", 30)
+            .attr("height", 12)
+            .style("fill", function(d) { return icon;})
           
         legend.append('text')
-              .attr('x', gridSize - 10)
-              .attr('y', function(d, i){ return i * gridSize + i * magic_padding / 2;})
-              .style("opacity", 1)
-              .html(function(d){ return icon; })
-              .attr('class', function(d){ return d.class; })
+              .attr("x", 70)
+              .attr("y", 42)
+              //.attr('class', function(d){ return "waffle-legend-text" + " " + d.class; })
               .attr('font-family', 'Roboto')
-              .attr("transform", function(d) { return "translate(" + gridSize/2 + "," + 5/6*gridSize  + ")"; })
-              .style('fill', function(d){ return colorscale(d.class); })
-              /*.style("font-size", function(d) {
-                val = 9;
-                val2 = 2.5;
-                textsize = Math.min(val2 * gridSize, (val2 * gridSize - val) / this.getComputedTextLength() * val);
-                return textsize * adjust + "px";
-              });*/
-  
-        legend.append('text')
-              .attr('x', 1.5*gridSize + magic_padding)
-              .attr('y', function(d, i){ return i * gridSize + i * magic_padding / 2;})
-              .style("opacity", 1)
               .html(function(d){ return d.name; })
-              .attr('class', function(d){ return "waffle-legend-text" + " " + d.class; })
-              .attr("transform", function(d) { return "translate(" + gridSize/2 + "," + 5/6*gridSize  + ")"; })
-  
-        function mouseover(d){
-          tooltip.transition().duration(100).style("opacity", .9);
-          el = data.filter(function(e){ return e.name == d.name})[0]
-          txt = "<b>" +el.name + "</b><br>" + d3.format(',')(el.value) + "<br>(" + d3.format(".0%")(el.percent) + ")"
-          tooltip.html(txt);
-  
-          d3.select("#" + idcontainer).selectAll("text").transition().duration(100).style("opacity", 0.2);
-          d3.select("#" + idcontainer).selectAll("text." + d.class).transition().duration(100).style("opacity", 1);
-        }
-  
-        function mouseout(d){
-          tooltip.transition().duration(100).style("opacity", 0);
-          d3.select("#" + idcontainer).selectAll("text").transition().duration(100).style("opacity", 1);
-        }
-  
-        function mousemove(d){
-          tooltip
-              .style("left", (d.pageX + 0 ) + "px")
-              .style("top", (d.pageY + -70) + "px");
-        }
+              //.attr("transform", function(d) { return "translate(" + gridSize/2 + "," + 5/6*gridSize  + ")"; })
   
       });
     }
