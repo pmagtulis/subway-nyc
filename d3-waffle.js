@@ -1,8 +1,8 @@
 function d3waffle() {
-    var margin = {top: 10, right: 10, bottom: 10, left: 10},
+    var margin = {top: 20, right: 20, bottom: 20, left: 20},
         icon = "&#9632;",
         scale = 1,
-        rows = 50,
+        rows = 15,
         adjust = 0.8,
         colorscale = d3.scale.category20(),
         appearancetimes = function(d, i){ return 500; },
@@ -83,7 +83,7 @@ function d3waffle() {
               .style("opacity", 0)
               .html(icon)
               .attr('class', function(d){ return d.class; })
-              .attr('font-family', 'FontAwesome')
+              .attr('font-family', 'Roboto')
               .attr("transform", function(d) { return "translate(" + gridSize/2 + "," + 5/6*gridSize  + ")"; })
               .style("text-anchor", "middle")
               .style('fill', function(d){ return colorscale(d.class); })
@@ -123,7 +123,7 @@ function d3waffle() {
               .style("opacity", 1)
               .html(function(d){ return icon; })
               .attr('class', function(d){ return d.class; })
-              .attr('font-family', 'FontAwesome')
+              .attr('font-family', 'Roboto')
               .attr("transform", function(d) { return "translate(" + gridSize/2 + "," + 5/6*gridSize  + ")"; })
               .style('fill', function(d){ return colorscale(d.class); })
               /*.style("font-size", function(d) {

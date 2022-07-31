@@ -1,5 +1,5 @@
 var data = [
-    { "name": "Riders (100K)", "value": 100000},
+    { "name": "Riders (99,999)", "value": 99999},
     { "name": "Crime rate (0.53)", "value": 1}
   ]
   
@@ -9,8 +9,8 @@ var data = [
 
 
   var chart = d3waffle()
-                  .rows(10)
-                  .scale(1/220)
+                  .rows(15)
+                  .scale(1/320)
                   .colorscale(palette)
                   .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
                   .height(400);
