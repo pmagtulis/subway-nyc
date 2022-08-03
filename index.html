@@ -81,7 +81,39 @@ html, body {
       .share-btn-container .fa-whatsapp {
           color: #fff
       }
+
+	  #chart-waffle-1 {
+        position: relative;
+        padding: 1rem;
+		margin: 0 auto;
+      }
+
+	  .spread-text {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        /* You can also do this one */
+        /* justify-content: space-between; */
+      }
+
+      .spread-text p {
+        font-size: 16px;
+        max-width: 600px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.8);
+        width: 100%;
+        padding: 1em;
+      }
+
   </style>
+
+<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
 
   <body>
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
@@ -707,19 +739,21 @@ html, body {
         Mio Tomita arrived in June for a summer program and has been taking the subway from 96th Street station to Columbia. But that will change come mid-August when her mom and daughter join her in the city. “To be honest, a lot of my colleagues here tell me not to take the subway,” said Tomita, who works as a reporter in Japan. "If it's just me, it's okay. But my mom and daughter see the news from here and taking the subway make them scared," she said.
     </div>
     <div class="block">
-		While safety concerns are valid, Danny Pearlstein, policy communications director at Riders Alliance, a commuter's group, stressed that the subway remains remarkably safe. Government data support this: riders still very rarely experience crime in the subway despite a marked increase over the past two years.
-    </div>
-    <div class="block">
-		"Crime isn't nearly so dramatic as the focus on it would suggest," Pearlstein said. "People by and large believe directly that they are going to be able to ride without an incident."
+		While safety concerns are valid, Danny Pearlstein, policy communications director at Riders Alliance, a commuter's group, stressed that the subway remains remarkably safe. Government data support this.
     </div>
 	<div class="block">
         <p class="mb-1 title is-5">Subway crime rate is very, very low</p>
-        <p class="mt-1 subtitle is-6">Less than 1 crime incident per 100,000 population recorded in past two years</p>
 	</div>
 	<div id="chart-waffle-1">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" type="text/javascript"></script>
 		<script src="./waffle-new.js"></script>
 		<script src="./chart.js"></script>
+	<div class="spread-text">
+			<p>These <span style="background: #e3e3e3"><strong>squares</strong></span> represent 100,000 subway riders.</p>
+			<p>According to NYPD and MTA data, crime rate at the subway averaged <span style="background: #780f49"><span class="has-text-white has-text-weight-bold">0.53 in 100,000 riders </span></span>over the past two years.</p>
+			<p>In short, riders still very rarely experience crme in the subway. "Crime <strong>isn't nearly so dramatic</strong> as the focus on it would suggest," Pearlstein said.</p>
+			<p>"People by and large believe directly that they are going to be able to ride without an incident," he said.</p>
+		</div>
 	</div>
 	<div class="block">
 	    <p class="subtitle is-6">Sources: NYPD, MTA</p>

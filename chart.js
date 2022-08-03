@@ -1,10 +1,10 @@
 var data = [
-    { "name": "Crime rate (0.53)", "value": 1},
-    { "name": "Riders (99,999)", "value": 99999}
+    { "name": "Riders (99,999)", "value": 99999},
+    { "name": "Crime rate (0.53)", "value": 1}
   ]
   
   var domain = data.map(function(d){ return slugify(d.name); })
-  var range = ["#780f49", "#e3e3e3"]
+  var range = ["#e3e3e3", "#780f49"]
   var palette = d3.scale.ordinal().domain(domain).range(range);
 
 
